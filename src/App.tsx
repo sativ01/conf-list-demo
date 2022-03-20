@@ -2,7 +2,7 @@ import * as React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Card, { ICardProps } from "./components/Card";
+import Card, { ICardProps } from "./components";
 import { LoremIpsum } from "lorem-ipsum";
 
 import profile1 from "./images/speaker/profile01.jpeg";
