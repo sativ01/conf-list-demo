@@ -8,12 +8,11 @@ import { getMockConferencesDate } from "./api/mockConferenceApi";
 export default function App() {
   const confs = React.useMemo(() => getMockConferencesDate(), []);
   const conferenceCards = React.useMemo(() => {
-    if (confs) {
+    if (confs.length > 0) {
       return confs.map((conference) => (
         <Card
-          key={conference.id}
-          conference={conference.conference}
-          creator={conference.creator}
+          conference={conference?.conference}
+          creator={conference?.creator}
         />
       ));
     }

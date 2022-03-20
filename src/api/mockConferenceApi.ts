@@ -63,12 +63,13 @@ export const getMockConference = (past = false): ICardProps => {
   const speakersCount = Math.random() * 10;
   const speakers = new Array(speakersCount).map((_) => ({
     fullName: getName(),
-    profileImage: getProfilePic()
+    profileImage: getProfilePic(),
+    id: uuid()
   }));
 
   return {
-    id: uuid(),
     conference: {
+      id: uuid(),
       title: "Creative Tech Week",
       startDate: start,
       endDate: end,
@@ -80,6 +81,7 @@ export const getMockConference = (past = false): ICardProps => {
       speakers
     },
     creator: {
+      id: uuid(),
       fullName: getName(),
       profileImage: getProfilePic()
     }

@@ -31,14 +31,15 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 export interface IPerson {
+  id: string;
   fullName: string;
   profileImage: string;
 }
 
 export interface ICardProps {
-  id: string;
   creator: IPerson;
   conference: {
+    id: string;
     title: string;
     description: {
       long: string[];
@@ -71,6 +72,7 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
       <AvatarGroup max={3}>
         {conference.speakers?.map((speaker) => (
           <Avatar
+            key={speaker.id}
             sx={{ bgcolor: red[500] }}
             aria-label={`creator ${speaker.fullName}`}
             src={speaker.profileImage}
@@ -87,6 +89,7 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
 
   return (
     <Card
+      key={conference.id}
       sx={{
         minWidth: 345,
         maxWidth: 645,
