@@ -16,7 +16,9 @@
     "react-dom": "latest",
     "react-redux": "7.2.6",
     "react-scripts": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "unique-names-generator": "4.7.1",
+    "uuid": "8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

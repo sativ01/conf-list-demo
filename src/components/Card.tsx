@@ -36,6 +36,7 @@ export interface IPerson {
 }
 
 export interface ICardProps {
+  id: string;
   creator: IPerson;
   conference: {
     title: string;
