@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+import { red, blue } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
@@ -57,6 +57,7 @@ const dateOptions = {
 
 const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
   const [expanded, setExpanded] = React.useState(false);
+  const isConferenceInPast = new Date() > conference.endDate;
   const paragraphs = React.useMemo(
     () =>
       conference.description.long.map((p) => (
@@ -84,9 +85,20 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 645 }}>
+    <Card
+      sx={{
+        minWidth: 345,
+        maxWidth: 645,
+        ...(isConferenceInPast && { opacity: [0.9, 0.8, 0.7] })
+      }}
+    >
       <CardHeader
+        onClick={handleExpandClick}
         sx={{
+          "&:hover": {
+            bgcolor: blue[200],
+            opacity: [0.9, 0.8, 0.7]
+          },
           "& .MuiCardHeader-title": {
             fontSize: "16px",
             fontWeight: "900",
@@ -141,7 +153,7 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography variant="h5">What to expect:</Typography>
+          <Typography variant="h5">Agenda:</Typography>
           {paragraphs}
         </CardContent>
       </Collapse>
