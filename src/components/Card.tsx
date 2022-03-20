@@ -67,6 +67,7 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
       )),
     [conference.description.long]
   );
+
   const speakers = React.useMemo(
     () => (
       <AvatarGroup max={3}>
@@ -91,6 +92,7 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
     <Card
       key={conference.id}
       sx={{
+        marginBottom: "3rem",
         minWidth: 345,
         maxWidth: 645,
         ...(isConferenceInPast && { opacity: [0.9, 0.8, 0.7] })

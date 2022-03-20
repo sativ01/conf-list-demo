@@ -7,8 +7,10 @@ import { ICardProps } from "../components";
 const profileImagesPool = [
   "https://www.profine-group.com/cms16/files/1_1_Unternehmensprofil_Content-Picture-1.jpg?w=256",
   "https://i.pinimg.com/170x/7b/2b/dd/7b2bddbb3dbd417fbedc59383421a066.jpg",
-  "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fdanielisaac632%2Fprofessional-profile-pictures%2F&psig=AOvVaw2weh6psVEThhn_rB5cUp85&ust=1647893501957000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNDV1uq_1fYCFQAAAAAdAAAAABAa",
-  "https://www.bighospitality.co.uk/var/wrbm_gb_hospitality/storage/images/3/3/5/2/2533-4-eng-GB/Business-Profile.jpg"
+  "https://www.bighospitality.co.uk/var/wrbm_gb_hospitality/storage/images/3/3/5/2/2533-4-eng-GB/Business-Profile.jpg",
+  "https://shotkit.com/wp-content/uploads/2021/06/Cool-profile-picture-LinkedIn.jpg",
+  "https://www.colesclassroom.com/wp-content/uploads/2017/11/Profile-1-1-of-1-800x533.jpg",
+  "https://img.freepik.com/free-photo/portrait-attractive-young-businessman-suit-standing-with-arms-crossed-light-grey-background_264277-1222.jpg?size=626&ext=jpg"
 ];
 
 const conferenceImagesPool = [
@@ -60,8 +62,8 @@ const getConferencePoster = () =>
 
 export const getMockConference = (past = false): ICardProps => {
   const { start, end } = past ? getPastConfDates() : getFutureConfDates();
-  const speakersCount = Math.random() * 10;
-  const speakers = new Array(speakersCount).map((_) => ({
+  const speakersCount = 1 + Math.floor(Math.random() * 10);
+  const speakers = new Array(speakersCount).fill(1).map((_) => ({
     fullName: getName(),
     profileImage: getProfilePic(),
     id: uuid()
@@ -93,12 +95,14 @@ export const getMockConferencesDate = (
   futureConfsCount = 5
 ): ICardProps[] => {
   const pastConfs = new Array(pastConfsCount)
+    .fill(1)
     .map((_) => getMockConference(true))
     .sort(
       (a, b) =>
         b.conference.startDate.getTime() - a.conference.startDate.getTime()
     );
   const futureConfs = new Array(futureConfsCount)
+    .fill(1)
     .map((_) => getMockConference())
     .sort(
       (a, b) =>

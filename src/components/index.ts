@@ -1,2 +1,4 @@
 import Card, { ICardProps, IPerson } from "./Card";
-export { Card, ICardProps, IPerson };
+import AddConference from "./AddConference";
+
+export { Card, ICardProps, IPerson, AddConference };
