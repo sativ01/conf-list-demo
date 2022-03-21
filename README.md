@@ -7,6 +7,8 @@
 - Redux Toolkit
 - Material-UI
 
+Codesandbox [demo link](https://codesandbox.io/s/conf-list-demo-19uk5f)
+
 ### Reasons to use selected framework
 
 - Typescript: makes development much easier. No need to jump between files to check the data format

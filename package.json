@@ -1,5 +1,5 @@
 {
-  "name": "create-react-app-with-typescript",
+  "name": "conf-list-demo",
   "version": "5.0.0",
   "private": true,
   "dependencies": {
@@ -25,5 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  }
+  },
+  "keywords": [],
+  "description": "demo"
 }
