@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import confReducer from "./api/conference.slice";
 
 export const store = configureStore({
-  reducer: {}
+  reducer: {
+    conference: confReducer
+  }
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

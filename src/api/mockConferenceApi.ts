@@ -1,5 +1,11 @@
 import { LoremIpsum } from "lorem-ipsum";
-import { uniqueNamesGenerator, starWars } from "unique-names-generator";
+import {
+  uniqueNamesGenerator,
+  starWars,
+  adjectives,
+  countries,
+  colors
+} from "unique-names-generator";
 import { v4 as uuid } from "uuid";
 
 import { ICardProps } from "../components";
@@ -17,10 +23,21 @@ const conferenceImagesPool = [
   "https://colorlib.com/wp/wp-content/uploads/sites/2/11_conference-website-design-1024x507.jpg",
   "https://wdo.org/wp-content/uploads/2019/05/IDC-1.jpg",
   "https://www.neonmoire.com/assets/uploads/16ca9574496",
-  "https://as2.ftcdn.net/jpg/02/59/70/31/1000_F_259703149_w75Iy7W2hWj86IZ6TRNRUlJFd7fpMWN8.jpg"
+  "https://as2.ftcdn.net/jpg/02/59/70/31/1000_F_259703149_w75Iy7W2hWj86IZ6TRNRUlJFd7fpMWN8.jpg",
+  "https://i.pinimg.com/736x/54/11/aa/5411aa7a3c0f55c65cbb167c932190c1.jpg",
+  "https://thumbs.dreamstime.com/z/business-conference-simple-template-invitation-geometric-magazine-conference-poster-business-meeting-design-banner-business-167522542.jpg"
 ];
 
 const getName = () => uniqueNamesGenerator({ dictionaries: [starWars] });
+
+const getConferenceTitle = () => {
+  const adj = uniqueNamesGenerator({
+    dictionaries: [adjectives, colors, countries],
+    separator: " "
+  });
+
+  return `${adj} conference`;
+};
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -40,16 +57,16 @@ const getRandomFutureDate = (end: Date, start = new Date()) =>
 
 const getPastConfDates = (): { start: Date; end: Date } => {
   const start = getRandomPastDate(new Date("2021-01-01"));
-  const end = new Date();
-  end.setDate(start.getDate() + (Math.random() * 10 + 1));
+  const end = new Date(start);
+  end.setDate(start.getDate() + (Math.floor(Math.random() * 10) + 1));
 
   return { start, end };
 };
 
 const getFutureConfDates = (): { start: Date; end: Date } => {
   const start = getRandomFutureDate(new Date("2023-01-01"));
-  const end = new Date();
-  end.setDate(start.getDate() + (Math.random() * 10 + 1));
+  const end = new Date(start);
+  end.setDate(start.getDate() + (Math.floor(Math.random() * 10) + 1));
 
   return { start, end };
 };
@@ -72,7 +89,7 @@ export const getMockConference = (past = false): ICardProps => {
   return {
     conference: {
       id: uuid(),
-      title: "Creative Tech Week",
+      title: getConferenceTitle(),
       startDate: start,
       endDate: end,
       image: getConferencePoster(),
@@ -93,7 +110,7 @@ export const getMockConference = (past = false): ICardProps => {
 export const getMockConferencesDate = (
   pastConfsCount = 5,
   futureConfsCount = 5
-): ICardProps[] => {
+) => {
   const pastConfs = new Array(pastConfsCount)
     .fill(1)
     .map((_) => getMockConference(true))
@@ -109,5 +126,5 @@ export const getMockConferencesDate = (
         b.conference.startDate.getTime() - a.conference.startDate.getTime()
     );
 
-  return [...pastConfs, ...futureConfs];
+  return [pastConfs, futureConfs];
 };

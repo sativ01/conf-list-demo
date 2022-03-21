@@ -48,7 +48,7 @@ export interface ICardProps {
     startDate: Date;
     endDate: Date;
     image: string;
-    speakers: IPerson[];
+    speakers?: IPerson[];
   };
 }
 
@@ -62,8 +62,10 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
   const isConferenceInPast = new Date() > conference.endDate;
   const paragraphs = React.useMemo(
     () =>
-      conference.description.long.map((p) => (
-        <Typography paragraph>{p}</Typography>
+      conference.description.long.map((p, idx) => (
+        <Typography key={`paragraph-${idx}`} paragraph>
+          {p}
+        </Typography>
       )),
     [conference.description.long]
   );
