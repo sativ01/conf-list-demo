@@ -34,7 +34,7 @@ export default function App() {
         </Typography>
       </Box>
       <Box alignContent="center">
-        <Typography variant="h6" align="center" component="h1" gutterBottom>
+        <Typography variant="h5" align="center" component="h1" gutterBottom>
           Upcomming Conferences
         </Typography>
         {futureConferenceCards}
