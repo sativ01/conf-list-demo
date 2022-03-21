@@ -25,7 +25,7 @@ Codesandbox [demo link](https://codesandbox.io/s/conf-list-demo-19uk5f)
 
 ## What to improve
 
-- Creation of a new conference is in simulation mode. The form does not cover all the required fields. On submit it does not take in account user input, but creates a conference with pre-set values
+- Creation of a new conference is in **simulation mode**. The form does not cover all the required fields. On submit it does not take in account user input, but creates a conference with **pre-set generated** values
 - Testing is done on basic level, test only mock data generator
 
 ## What is not done
