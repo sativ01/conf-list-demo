@@ -1,42 +1,33 @@
-# Create React App example with TypeScript
+# Conference Mock Web app
 
-## How to use
+## What is used:
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+- Typescript
+- React (create-react-app)
+- Redux Toolkit
+- Material-UI
 
-<!-- #default-branch-switch -->
+### Reasons to use selected framework
 
-```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app-with-typescript
-cd create-react-app-with-typescript
-```
+- Typescript: makes development much easier. No need to jump between files to check the data format
+- React: easy to set up with Typescript and I'm familiar with the library
+- Redux Toolkit: simple state management tool. Very handy and straight forward. Easy to scale
+- Material-UI: has needed set of styled components and has great API and integration into react
 
-Install it and run:
+## What is done
 
-```sh
-npm install
-npm start
-```
+- App generates a list of past and future conferences and displays them
+- Each conference has a list of properties that are displayed and it expands by clicking on the header
+- Creating of a new conference using floating button
+- Testing on a basic level
 
-or:
+## What to improve
 
-<!-- #default-branch-switch -->
+- Creation of a new conference is in simulation mode. The form does not cover all the required fields. On submit it does not take in account user input, but creates a conference with pre-set values
+- Testing is done on basic level, test only mock data generator
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/create-react-app-with-typescript)
+## What is not done
 
-<!-- #default-branch-switch -->
-
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/create-react-app-with-typescript)
-
-## The idea behind the example
-
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app) with [TypeScript](https://github.com/Microsoft/TypeScript).
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/guides/interoperability/#styled-components).
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/getting-started/templates/) section.
+- Translations
+- A11y check - although Material-UI supports A11y out of the box
+- Weather fetch
