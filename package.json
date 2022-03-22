@@ -8,9 +8,8 @@
     "@mui/icons-material": "5.5.1",
     "@mui/material": "latest",
     "@reduxjs/toolkit": "1.8.0",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "@types/react-redux": "7.1.23",
+    "country-finder": "1.0.8",
+    "geojson-places": "1.0.3",
     "lorem-ipsum": "2.0.4",
     "react": "latest",
     "react-dom": "latest",
@@ -19,6 +18,12 @@
     "typescript": "latest",
     "unique-names-generator": "4.7.1",
     "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "@types/country-code-lookup": "0.0.19",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/react-redux": "7.1.23"
   },
   "scripts": {
     "start": "react-scripts start",

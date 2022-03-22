@@ -30,13 +30,13 @@ const conferenceImagesPool = [
 
 const getName = () => uniqueNamesGenerator({ dictionaries: [starWars] });
 
-const getConferenceTitle = () => {
+const getConferenceTitle = (country: string) => {
   const adj = uniqueNamesGenerator({
-    dictionaries: [adjectives, colors, countries],
+    dictionaries: [adjectives, colors],
     separator: " "
   });
 
-  return `${adj} conference`;
+  return `${adj} ${country} conference`;
 };
 
 const lorem = new LoremIpsum({
@@ -86,10 +86,12 @@ export const getMockConference = (past = false): ICardProps => {
     id: uuid()
   }));
 
+  const countryName = uniqueNamesGenerator({ dictionaries: [countries] });
+
   return {
     conference: {
       id: uuid(),
-      title: getConferenceTitle(),
+      title: getConferenceTitle(countryName),
       startDate: start,
       endDate: end,
       image: getConferencePoster(),
@@ -97,7 +99,8 @@ export const getMockConference = (past = false): ICardProps => {
         short: lorem.generateSentences(2),
         long: lorem.generateParagraphs(2).split("\n")
       },
-      speakers
+      speakers,
+      countryName
     },
     creator: {
       id: uuid(),
@@ -116,14 +119,14 @@ export const getMockConferencesDate = (
     .map((_) => getMockConference(true))
     .sort(
       (a, b) =>
-        b.conference.startDate.getTime() - a.conference.startDate.getTime()
+        a.conference.startDate.getTime() - b.conference.startDate.getTime()
     );
   const futureConfs = new Array(futureConfsCount)
     .fill(1)
     .map((_) => getMockConference())
     .sort(
       (a, b) =>
-        b.conference.startDate.getTime() - a.conference.startDate.getTime()
+        a.conference.startDate.getTime() - b.conference.startDate.getTime()
     );
 
   return [pastConfs, futureConfs];

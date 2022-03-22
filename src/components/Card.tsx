@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import { red, blue } from "@mui/material/colors";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Weather from "./Weather";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -48,6 +49,7 @@ export interface ICardProps {
     startDate: Date;
     endDate: Date;
     image: string;
+    countryName?: string;
     speakers?: IPerson[];
   };
 }
@@ -163,6 +165,10 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
         <CardContent>
           <Typography variant="h5">Agenda:</Typography>
           {paragraphs}
+          <Weather
+            isVisible={expanded}
+            countryName={conference.countryName ?? "US"}
+          />
         </CardContent>
       </Collapse>
     </Card>

@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import confReducer from "./api/conference.slice";
+import { weatherApi } from "./api/weather.api";
 
 export const store = configureStore({
   reducer: {
-    conference: confReducer
-  }
+    conference: confReducer,
+    [weatherApi.reducerPath]: weatherApi.reducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(weatherApi.middleware)
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
