@@ -22,6 +22,7 @@ Codesandbox [demo link](https://codesandbox.io/s/conf-list-demo-19uk5f)
 - Each conference has a list of properties that are displayed and it expands by clicking on the header
 - Creating of a new conference using floating button
 - Testing on a basic level
+- Weather fetch for a conference location. Displayed on conference selection
 
 ## What to improve
 
@@ -32,4 +33,3 @@ Codesandbox [demo link](https://codesandbox.io/s/conf-list-demo-19uk5f)
 
 - Translations
 - A11y check - although Material-UI supports A11y out of the box
-- Weather fetch
