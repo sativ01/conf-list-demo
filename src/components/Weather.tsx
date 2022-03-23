@@ -1,5 +1,4 @@
 import * as React from "react";
-import { byName } from "country-finder";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useGetWeatherQuery } from "../api/weather.api";
@@ -8,17 +7,14 @@ import CircularProgress from "@mui/material/CircularProgress";
 import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
 
 interface IWeatherProps {
-  isVisible: boolean;
-  countryName: string;
+  location: {
+    lat: number;
+    lon: number;
+  };
 }
 
-const Weather: React.FC<IWeatherProps> = ({ isVisible, countryName }) => {
-  const countryData = byName(countryName);
-  const { data, error, isLoading } = useGetWeatherQuery({
-    lat: countryData?.lat,
-    lon: countryData?.long
-  });
-  console.log(error);
+const Weather: React.FC<IWeatherProps> = ({ location }) => {
+  const { data, isLoading } = useGetWeatherQuery(location);
 
   if (isLoading) {
     return <CircularProgress />;
@@ -36,7 +32,13 @@ const Weather: React.FC<IWeatherProps> = ({ isVisible, countryName }) => {
     );
   }
 
-  return null;
+  return (
+    <Box>
+      <Typography sx={{ display: "flex", alignItems: "center" }}>
+        No weather data...
+      </Typography>
+    </Box>
+  );
 };
 
 export default Weather;

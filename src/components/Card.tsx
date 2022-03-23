@@ -49,7 +49,11 @@ export interface ICardProps {
     startDate: Date;
     endDate: Date;
     image: string;
-    countryName?: string;
+    location: {
+      countryName: string;
+      lat: number | null;
+      lon: number | null;
+    };
     speakers?: IPerson[];
   };
 }
@@ -165,10 +169,7 @@ const ConferenceCard: React.FC<ICardProps> = ({ conference, creator }) => {
         <CardContent>
           <Typography variant="h5">Agenda:</Typography>
           {paragraphs}
-          <Weather
-            isVisible={expanded}
-            countryName={conference.countryName ?? "US"}
-          />
+          <Weather location={conference.location} />
         </CardContent>
       </Collapse>
     </Card>

@@ -6,6 +6,7 @@ import {
   countries,
   colors
 } from "unique-names-generator";
+import { byName } from "country-finder";
 import { v4 as uuid } from "uuid";
 
 import { ICardProps } from "../components";
@@ -87,6 +88,7 @@ export const getMockConference = (past = false): ICardProps => {
   }));
 
   const countryName = uniqueNamesGenerator({ dictionaries: [countries] });
+  const countryData = byName(countryName);
 
   return {
     conference: {
@@ -100,7 +102,11 @@ export const getMockConference = (past = false): ICardProps => {
         long: lorem.generateParagraphs(2).split("\n")
       },
       speakers,
-      countryName
+      location: {
+        countryName,
+        lat: countryData?.lat ?? null,
+        lon: countryData?.long ?? null
+      }
     },
     creator: {
       id: uuid(),
